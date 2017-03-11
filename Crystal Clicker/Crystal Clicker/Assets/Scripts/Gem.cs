@@ -17,6 +17,7 @@ public class Gem : MonoBehaviour {
 
     private SpriteRenderer _mySpriteRenderer;
     private EnergyGuage mainGuage;
+    private Collider2D _myCollider;
 
     [Serializable]
     public class SpriteManager {
@@ -28,6 +29,7 @@ public class Gem : MonoBehaviour {
     void Awake () {
         _myAnim = GetComponentInChildren<Animator>();
         _mySpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        _myCollider = GetComponent<Collider2D>();
     }
 
     void Start() {
@@ -47,7 +49,21 @@ public class Gem : MonoBehaviour {
             Missed();
             Destroy(gameObject);
         }
-	}
+
+        #if (UNITY_IPHONE || UNITY_ANDROID)
+        OnTouch();
+        #endif
+    }
+
+
+    private void OnTouch() {
+        if (Input.touchCount > 0) {
+            Vector3 wp = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+            if (_myCollider.OverlapPoint(wp)) {
+                _myAnim.SetTrigger("Click");
+            }
+        }
+    }
 
 
     private void OnMouseDown() {
