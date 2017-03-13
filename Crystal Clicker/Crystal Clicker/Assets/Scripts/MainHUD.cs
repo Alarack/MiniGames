@@ -14,7 +14,9 @@ public class MainHUD : MonoBehaviour {
     public int maxGemCount = 15;
 
     //[HideInInspector]
-    public int gemCount;
+    //public int gemCount;
+
+    public List<Gem> gems = new List<Gem>();
 
 	void Awake () {
 		

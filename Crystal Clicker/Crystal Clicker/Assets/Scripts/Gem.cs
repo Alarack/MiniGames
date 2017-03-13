@@ -114,7 +114,8 @@ public class Gem : MonoBehaviour {
     }
 
     public void Die() {
-        MainHUD.mainHUD.gemCount--;
+        //MainHUD.mainHUD.gemCount--;
+        MainHUD.mainHUD.gems.Remove(this);
         Destroy(gameObject);
     }
 

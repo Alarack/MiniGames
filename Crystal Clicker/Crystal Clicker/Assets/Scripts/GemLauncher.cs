@@ -19,7 +19,7 @@ public class GemLauncher : MonoBehaviour {
 
     public float difficultyTimeIncrament = 10f;
 
-    public int shotGun;
+    public int burst;
 
 
     private float _timer;
@@ -29,7 +29,7 @@ public class GemLauncher : MonoBehaviour {
 	void Start () {
 
         //InvokeRepeating("LaunchGem", 0f, Random.Range(minSpawnTime, maxSpawnTime));
-        LaunchGem();
+        LaunchGem(1);
 	}
 
 	void Update () {
@@ -39,8 +39,8 @@ public class GemLauncher : MonoBehaviour {
 
         if (_timer > RandomizeSpawnTime()) {
 
-            if(MainHUD.mainHUD.gemCount < MainHUD.mainHUD.maxGemCount)
-                LaunchGem();
+            if(MainHUD.mainHUD.gems.Count < MainHUD.mainHUD.maxGemCount)
+                LaunchGem(burst);
 
             _timer = 0f;
         }
@@ -49,56 +49,47 @@ public class GemLauncher : MonoBehaviour {
             IncreaseSpawnSpeed();
             _speedTimer = 0f;
         }
-
-
-        if (Input.GetKeyDown(KeyCode.Space)){
-            ShotGun();
-        }
-
-
 	}
 
 
     public void IncreaseSpawnSpeed() {
-        minSpawnTime *= 0.9f;
-        maxSpawnTime *= 0.9f;
+        minSpawnTime *= 0.95f;
+        maxSpawnTime *= 0.95f;
+        burst++;
+
+        if(burst > MainHUD.mainHUD.maxGemCount) {
+            burst--;
+        }
     }
 
     public float RandomizeSpawnTime() {
         return Random.Range(minSpawnTime, maxSpawnTime);
     }
 
-    public void LaunchGem() {
+    public void LaunchGem(int number) {
 
-        Vector3 angle = new Vector3(0f,0f, Random.Range(minAngle, maxAngle));
+        for (int i = 0; i < number; i++) {
+            Vector3 angle = new Vector3(0f, 0f, Random.Range(minAngle, maxAngle));
 
-        transform.localRotation = Quaternion.Euler(angle);
+            transform.localRotation = Quaternion.Euler(angle);
 
-        GameObject activeGem = Instantiate(gem, transform.position, Quaternion.identity);
-        Gem gemScript = activeGem.GetComponent<Gem>();
+            GameObject activeGem = Instantiate(gem, transform.position, Quaternion.identity);
+            Gem gemScript = activeGem.GetComponent<Gem>();
 
-        int randColor = Random.Range(0, 4); //TODO: find a way to make this not hardcoded
-        Constants.GemColor color = (Constants.GemColor)randColor;
+            int randColor = Random.Range(0, 4); //TODO: find a way to make this not hardcoded
+            Constants.GemColor color = (Constants.GemColor)randColor;
 
-        gemScript.gemColor = color;
+            gemScript.gemColor = color;
 
+            activeGem.transform.localScale *= Random.Range(minSize, maxSize);
+            Rigidbody2D gemBody = activeGem.GetComponent<Rigidbody2D>();
+            gemBody.velocity = transform.up * Random.Range(minSpeed, maxSpeed);
+            gemBody.angularVelocity = Random.Range(minRotationSpeed, maxRotationSpeed);
 
-        activeGem.transform.localScale *= Random.Range(minSize, maxSize);
-        Rigidbody2D gemBody = activeGem.GetComponent<Rigidbody2D>();
-        gemBody.velocity = transform.up * Random.Range(minSpeed, maxSpeed);
-        gemBody.angularVelocity = Random.Range(minRotationSpeed, maxRotationSpeed);
+            //MainHUD.mainHUD.gemCount++;
+            MainHUD.mainHUD.gems.Add(gemScript);
 
-
-        MainHUD.mainHUD.gemCount++;
-    }
-
-    public void ShotGun() {
-        for(int i = 0; i < shotGun; i++) {
-            LaunchGem();
         }
-
-
     }
-
 
 }
