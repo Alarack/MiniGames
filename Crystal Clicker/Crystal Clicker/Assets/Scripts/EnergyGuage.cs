@@ -34,7 +34,6 @@ public class EnergyGuage : MonoBehaviour {
         public Color barColor = Color.white;
     }
 
-
     void Start() {
         _basePosiiton = transform.localPosition;
     }
@@ -49,7 +48,6 @@ public class EnergyGuage : MonoBehaviour {
             _timer = 0f;
         }
 
-
         if (_adjustFill) {
             if (fill.fillAmount + _fillMod < fill.fillAmount || fill.fillAmount + _fillMod > fill.fillAmount) {
                 fill.fillAmount = Mathf.Lerp(fill.fillAmount, fill.fillAmount + _fillMod, 1.0f * Time.deltaTime);
@@ -63,9 +61,6 @@ public class EnergyGuage : MonoBehaviour {
             fill.color = Color.Lerp(fill.color, _targetColor, Time.deltaTime);
         }
 
-
-
-
         if (shakeTime > 0) {
             Shake();
             shakeTime -= Time.deltaTime;
@@ -73,21 +68,12 @@ public class EnergyGuage : MonoBehaviour {
         if (Vector2.Distance(transform.localPosition, _basePosiiton) > 1.5f) {
             transform.localPosition = _basePosiiton;
         }
-
-
     }
-
-
 
     public void Shake() {
-
         Vector2 shakes = Random.insideUnitCircle * shakeAmount;
-
         transform.position += new Vector3(shakes.x, shakes.y, 0f);
-
-
     }
-
 
     public void AdjustFill(float amount) {
 
@@ -107,22 +93,15 @@ public class EnergyGuage : MonoBehaviour {
             _fillMod = 0f;
         }
 
-
         if (amount > 0) {
-
             amount += (currCombo *.01f);
             shakeTime += 0.2f;
-            Debug.Log(amount);
         }
-
 
         _fillMod = amount;
 
         _adjustFill = true;
-
-        //fill.fillAmount += amount;
     }
-
 
     private void OnTriggerEnter2D(Collider2D other) {
 
@@ -142,18 +121,14 @@ public class EnergyGuage : MonoBehaviour {
                 }
                 comboText.text = "Combo: X" + currCombo;
 
-
                 for (int i = 0; i < guageColors.Count; i++) {
                     if (fragScript.fragmentColor == guageColors[i].gemColor) {
                         _targetColor = guageColors[i].barColor;
                         _currentColor = fragScript.fragmentColor;
                     }
-
                 }
 
-
                 other.GetComponent<GemFragment>().Die();
-                //Destroy(other.gameObject);
             }
         }
     }

@@ -47,7 +47,7 @@ public class Gem : MonoBehaviour {
 	void Update () {
 		if(transform.position.y < -6f) {
             Missed();
-            Destroy(gameObject);
+            Die();
         }
 
         #if (UNITY_IPHONE || UNITY_ANDROID)
@@ -88,7 +88,7 @@ public class Gem : MonoBehaviour {
             particles.GetComponent<ParticleSeek>().SetTarget(empty.transform);
         }
 
-        Destroy(gameObject);
+        Die();
     }
 
     public void SpawnFragments() {
@@ -110,6 +110,11 @@ public class Gem : MonoBehaviour {
 
         }
 
+        Die();
+    }
+
+    public void Die() {
+        MainHUD.mainHUD.gemCount--;
         Destroy(gameObject);
     }
 
@@ -119,9 +124,11 @@ public class Gem : MonoBehaviour {
     }
 
     public void Missed() {
-        mainGuage.AdjustFill(-.02f);
+        int missed = mainGuage.numMissed;
+
+        mainGuage.AdjustFill(-.02f * missed);
         mainGuage.numMissed++;
-        mainGuage.missedText.text = mainGuage.numMissed + " Missed";
+        mainGuage.missedText.text = missed + " Missed";
     }
 
 

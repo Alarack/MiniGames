@@ -11,6 +11,10 @@ public class MainHUD : MonoBehaviour {
     public Transform yellowEnergyAttractor;
     public Transform mainAttractor;
 
+    public int maxGemCount = 15;
+
+    //[HideInInspector]
+    public int gemCount;
 
 	void Awake () {
 		
@@ -22,8 +26,7 @@ public class MainHUD : MonoBehaviour {
         }
 
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 		
 	}
