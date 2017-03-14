@@ -15,6 +15,8 @@ public class Gem : MonoBehaviour {
     public int maxFragments;
     public int minFragments;
 
+    public bool nonSprited;
+
     private SpriteRenderer _mySpriteRenderer;
     private EnergyGuage mainGuage;
     private Collider2D _myCollider;
@@ -34,13 +36,17 @@ public class Gem : MonoBehaviour {
 
     void Start() {
         mainGuage = MainHUD.mainHUD.mainAttractor.GetComponentInParent<EnergyGuage>();
-        for (int i = 0; i < sprites.Length; i++) {
 
-            if (sprites[i].fragmentColor == gemColor) {
-                _mySpriteRenderer.sprite = sprites[i].sprite;
-                break;
+        if (!nonSprited) {
+            for (int i = 0; i < sprites.Length; i++) {
+
+                if (sprites[i].fragmentColor == gemColor) {
+                    _mySpriteRenderer.sprite = sprites[i].sprite;
+                    break;
+                }
             }
         }
+        
 
     }
 	

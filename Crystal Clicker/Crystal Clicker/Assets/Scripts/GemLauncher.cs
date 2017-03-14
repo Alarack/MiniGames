@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GemLauncher : MonoBehaviour {
 
-    public GameObject gem;
+    public GameObject[] gems;
     public float minSpeed;
     public float maxSpeed;
     public float minRotationSpeed;
@@ -73,7 +73,9 @@ public class GemLauncher : MonoBehaviour {
 
             transform.localRotation = Quaternion.Euler(angle);
 
-            GameObject activeGem = Instantiate(gem, transform.position, Quaternion.identity);
+            int rand = Random.Range(0, gems.Length);
+
+            GameObject activeGem = Instantiate(gems[rand], transform.position, Quaternion.identity);
             Gem gemScript = activeGem.GetComponent<Gem>();
 
             int randColor = Random.Range(0, 4); //TODO: find a way to make this not hardcoded
