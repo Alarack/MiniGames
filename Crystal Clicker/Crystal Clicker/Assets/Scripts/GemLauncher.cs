@@ -75,18 +75,18 @@ public class GemLauncher : MonoBehaviour {
 
             int rand = Random.Range(0, gems.Length);
 
-            GameObject activeGem = Instantiate(gems[rand], transform.position, Quaternion.identity);
+            GameObject activeGem = Instantiate(gems[rand], transform.position, transform.rotation);
             Gem gemScript = activeGem.GetComponent<Gem>();
 
-            int randColor = Random.Range(0, 4); //TODO: find a way to make this not hardcoded
-            Constants.GemColor color = (Constants.GemColor)randColor;
+            //int randColor = Random.Range(0, 4); //TODO: find a way to make this not hardcoded
+            //Constants.GemColor color = (Constants.GemColor)randColor;
 
-            gemScript.gemColor = color;
+            //gemScript.gemColor = color;
 
             activeGem.transform.localScale *= Random.Range(minSize, maxSize);
             Rigidbody2D gemBody = activeGem.GetComponent<Rigidbody2D>();
-            gemBody.velocity = transform.up * Random.Range(minSpeed, maxSpeed);
-            gemBody.angularVelocity = Random.Range(minRotationSpeed, maxRotationSpeed);
+            gemBody.velocity = activeGem.transform.up * Random.Range(minSpeed, maxSpeed);
+            //gemBody.angularVelocity = Random.Range(minRotationSpeed, maxRotationSpeed);
 
             //MainHUD.mainHUD.gemCount++;
             MainHUD.mainHUD.gems.Add(gemScript);
