@@ -5,7 +5,9 @@ using UnityEngine;
 public class ButtonAnimHelper : MonoBehaviour {
 
     public enum AnimationEffect {
-        Bounce
+        Bounce,
+        TweakEyes,
+        None
     }
 
 

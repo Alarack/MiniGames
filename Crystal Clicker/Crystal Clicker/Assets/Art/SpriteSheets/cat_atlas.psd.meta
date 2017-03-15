@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 2cd8b739a613e9f4ab9f0df3cc48d703
-timeCreated: 1489445832
+timeCreated: 1489525569
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -11,6 +11,15 @@ TextureImporter:
     21300008: pupil_Torch
     21300010: mouth_Torch
     21300012: tongue_Torch
+    21300014: head_Tweak
+    21300016: whiskers_Tweak
+    21300018: eyebrows_tweak
+    21300020: Head_Mittens
+    21300022: mitten_left
+    21300024: mitten_right
+    21300026: Hat_Mittens
+    21300028: eyebrows_mittens
+    21300030: whiskers_mittens
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -177,6 +186,123 @@ TextureImporter:
         x: 161
         y: 928
         width: 26
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: head_Tweak
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 645
+        width: 108
+        height: 125
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: whiskers_Tweak
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 724
+        width: 179
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: eyebrows_tweak
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 700
+        width: 69
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Head_Mittens
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 515
+        width: 108
+        height: 125
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mitten_left
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 597
+        width: 59
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mitten_right
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 548
+        width: 59
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Hat_Mittens
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 542
+        width: 85
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: eyebrows_mittens
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 625
+        width: 60
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: whiskers_mittens
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 588
+        width: 144
         height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
