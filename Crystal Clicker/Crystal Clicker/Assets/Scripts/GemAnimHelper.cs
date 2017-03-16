@@ -24,6 +24,10 @@ public class GemAnimHelper : MonoBehaviour {
             case ButtonAnimHelper.AnimationEffect.TweakEyes:
                 _anim.SetTrigger("TweakEyes");
                 break;
+
+            case ButtonAnimHelper.AnimationEffect.BlingBeat:
+                _anim.SetTrigger("BlingBeat");
+                break;
         }
 
     }

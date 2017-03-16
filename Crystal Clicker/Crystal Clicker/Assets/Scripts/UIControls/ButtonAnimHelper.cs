@@ -7,6 +7,7 @@ public class ButtonAnimHelper : MonoBehaviour {
     public enum AnimationEffect {
         Bounce,
         TweakEyes,
+        BlingBeat,
         None
     }
 

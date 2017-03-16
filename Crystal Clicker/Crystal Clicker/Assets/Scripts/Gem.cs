@@ -122,6 +122,10 @@ public class Gem : MonoBehaviour {
     public void Die() {
         //MainHUD.mainHUD.gemCount--;
         MainHUD.mainHUD.gems.Remove(this);
+
+        GameObject deathEffect = Instantiate(this.deathEffect, transform.position, transform.rotation) as GameObject;
+        Destroy(deathEffect, 0.2f);
+
         Destroy(gameObject);
     }
 
@@ -162,6 +166,15 @@ public class Gem : MonoBehaviour {
             default:
 
                 return MainHUD.mainHUD.redEnergyAttractor;
+        }
+
+
+    }
+
+
+    void OnCollisionEnter2D(Collision2D other) {
+        if(other.gameObject.tag == "Wall") {
+            GetComponent<Rigidbody2D>().velocity *= 0.5f;
         }
 
 
